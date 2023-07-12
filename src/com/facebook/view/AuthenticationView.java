@@ -1,6 +1,6 @@
 package com.facebook.view;
 
-import com.facebook.controller.UserController;
+import com.facebook.controller.AuthenticationController;
 import com.facebook.model.User;
 import com.facebook.model.UserBuilder;
 import com.facebook.view.validation.UserValidation;
@@ -15,7 +15,7 @@ import com.facebook.view.validation.UserValidation;
  */
 public class AuthenticationView extends CommonView {
 
-    private final UserController userController = UserController.getInstance();
+    private final AuthenticationController authenticationController = AuthenticationController.getInstance();
     private final UserValidation userValidation = UserValidation.getInstance();
     private final UserView userView = UserView.getInstance();
     private static AuthenticationView authenticationView;
@@ -41,12 +41,6 @@ public class AuthenticationView extends CommonView {
         }
 
         return authenticationView;
-    }
-
-    public static void main(String[] args) {
-        final AuthenticationView authenticationView = AuthenticationView.getInstance();
-
-        authenticationView.displayMenu();
     }
 
     /**
@@ -90,7 +84,7 @@ public class AuthenticationView extends CommonView {
         user.setGender(userView.getGender());
         user.setDateOfBirth(userView.getDateOfBirth());
 
-        if (userController.signUp(user.build())) {
+        if (authenticationController.signUp(user.build())) {
             System.out.println("ACCOUNT SUCCESSFULLY SIGN UP");
         } else {
             System.out.println("ACCOUNT ALREADY EXIST");
@@ -99,7 +93,7 @@ public class AuthenticationView extends CommonView {
         System.out.println("PRESS YES FOR EDIT USER DETAILS AND PRESS ANY KEY FOR MENU ");
 
         if (userValidation.validateAccess(SCANNER.nextLine())) {
-            userView.displaysUserOptions(userController.getUserId(user.build()));
+            userView.displaysUserOptions(authenticationController.getUserId(user.build()));
         } else {
             displayMenu();
         }
@@ -117,7 +111,7 @@ public class AuthenticationView extends CommonView {
         signInChoice(user);
         user.setPassword(userView.getPassword());
 
-        if (userController.signIn(user.build())) {
+        if (authenticationController.signIn(user.build())) {
             System.out.println("ACCOUNT SIGN IN");
         } else {
             System.out.println("INCORRECT EMAIL OR MOBILE NUMBER AND PASSWORD");
@@ -127,7 +121,7 @@ public class AuthenticationView extends CommonView {
                 "FOR PRINT OPTION AND PRESS ANY KEY FOR MAIN MENU"));
 
         if (userValidation.validateAccess(SCANNER.nextLine())) {
-            userView.displaysUserOptions(userController.getUserId(user.build()));
+            userView.displaysUserOptions(authenticationController.getUserId(user.build()));
         } else {
             displayMenu();
         }

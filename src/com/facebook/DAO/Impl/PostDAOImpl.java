@@ -1,8 +1,8 @@
-package com.facebook.service.impl2;
+package com.facebook.DAO.Impl;
 
+import com.facebook.DAO.PostDAO;
 import com.facebook.DAOConnection.JDBCConnection;
 import com.facebook.model.Post;
-import com.facebook.service.PostService;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,9 +17,9 @@ import java.util.Collection;
  * @author vasanth
  * @version 1.1
  */
-public class PostDAOImpl implements PostService {
+public class PostDAOImpl implements PostDAO {
 
-    private static PostService postDAOImpl;
+    private static PostDAO postDAOImpl;
 
     /**
      * <p>
@@ -36,7 +36,7 @@ public class PostDAOImpl implements PostService {
      *
      * @return Returns the singleton instance of the post service implementation class.
      */
-    public static PostService getInstance() {
+    public static PostDAO getInstance() {
         if (null == postDAOImpl) {
             postDAOImpl = new PostDAOImpl();
         }
@@ -66,7 +66,7 @@ public class PostDAOImpl implements PostService {
 
             return true;
         } catch (final Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
 
         return false;
@@ -101,7 +101,7 @@ public class PostDAOImpl implements PostService {
                 POSTS.add(post);
             }
         } catch (final Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
 
         return POSTS;
@@ -136,7 +136,7 @@ public class PostDAOImpl implements PostService {
                 return post;
             }
         } catch (final Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
 
         return null;
@@ -164,7 +164,7 @@ public class PostDAOImpl implements PostService {
 
             return true;
         } catch (final Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
 
         return false;
@@ -189,7 +189,7 @@ public class PostDAOImpl implements PostService {
 
             return true;
         } catch (final Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
 
         return false;

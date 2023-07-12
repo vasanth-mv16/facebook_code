@@ -1,9 +1,8 @@
 package com.facebook.controller;
 
 import com.facebook.model.Post;
+import com.facebook.service.Impl2.PostServiceImpl;
 import com.facebook.service.PostService;
-import com.facebook.service.Impl.PostServiceImpl;
-import com.facebook.service.impl2.PostDAOImpl;
 
 import java.util.Collection;
 
@@ -18,8 +17,7 @@ import java.util.Collection;
 public class PostController {
 
     private static PostController postController;
-    private static final PostService POST_SERVICE_DAO = PostDAOImpl.getInstance();
-    private static final PostService POST_SERVICE = PostServiceImpl.getInstance();
+    private static final PostService POST_SERVICE_IMPL = new PostServiceImpl();
 
     /**
      * <p>
@@ -53,7 +51,7 @@ public class PostController {
      * @return True if the post is created, false otherwise.
      */
     public boolean create(final Post post) {
-        return POST_SERVICE_DAO.create(post);
+        return POST_SERVICE_IMPL.create(post);
     }
 
     /**
@@ -64,7 +62,7 @@ public class PostController {
      * @return Collection of post of the user
      */
     public Collection<Post> getALl(final Long userId) {
-        return POST_SERVICE_DAO.getAll(userId);
+        return POST_SERVICE_IMPL.getAll(userId);
     }
 
     /**
@@ -76,7 +74,7 @@ public class PostController {
      * @return Returns {@link Post} of the user by id
      */
     public Post get(final Long id) {
-        return POST_SERVICE_DAO.get(id);
+        return POST_SERVICE_IMPL.get(id);
     }
 
     /**
@@ -88,7 +86,7 @@ public class PostController {
      * @return True if the post is updated, false otherwise.
      */
     public boolean update(final Post post) {
-        return POST_SERVICE_DAO.update(post);
+        return POST_SERVICE_IMPL.update(post);
     }
 
     /**
@@ -100,6 +98,6 @@ public class PostController {
      * @return True if the post is deleted, false otherwise.
      */
     public boolean delete(final Long id) {
-        return POST_SERVICE_DAO.delete(id);
+        return POST_SERVICE_IMPL.delete(id);
     }
 }

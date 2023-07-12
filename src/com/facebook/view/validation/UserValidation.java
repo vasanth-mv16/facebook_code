@@ -101,7 +101,7 @@ public class UserValidation {
     public boolean validateDateOfBirth(final String dateOfBirth) {
         try {
             final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-uuuu")
-                                                   .withResolverStyle(ResolverStyle.STRICT);
+                    .withResolverStyle(ResolverStyle.STRICT);
             final LocalDate localDate = LocalDate.parse(dateOfBirth, dateFormatter);
             final LocalDate presentDate = LocalDate.now();
             final LocalDate previousYear = LocalDate.MIN;

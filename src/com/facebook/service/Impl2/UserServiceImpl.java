@@ -1,16 +1,13 @@
-package com.facebook.service;
+package com.facebook.service.Impl2;
 
+import com.facebook.DAO.Impl.UserDAOImpl;
+import com.facebook.DAO.UserDAO;
 import com.facebook.model.User;
+import com.facebook.service.UserService;
 
-/**
- * <p>
- * Provides service for the user details.
- * </p>
- *
- * @author vasanth
- * @version 1.0
- */
-public interface UserService {
+public class UserServiceImpl implements UserService {
+
+    private static final UserDAO USER_DAO_IMPL = new UserDAOImpl();
 
     /**
      * <p>
@@ -20,7 +17,10 @@ public interface UserService {
      * @param user Refers {@link User} to update
      * @return True if the user details are updated, false otherwise
      */
-    boolean update(final User user);
+    @Override
+    public boolean update(User user) {
+        return USER_DAO_IMPL.update(user);
+    }
 
     /**
      * <p>
@@ -30,7 +30,10 @@ public interface UserService {
      * @param id Represents the id of the user to be deleted
      * @return True if the user details are successfully deleted, false otherwise
      */
-    boolean delete(final Long id);
+    @Override
+    public boolean delete(Long id) {
+        return USER_DAO_IMPL.delete(id);
+    }
 
     /**
      * <p>
@@ -40,6 +43,8 @@ public interface UserService {
      * @param id Represents the id of the user to retrieve
      * @return Returns {@link User} details
      */
-    User get(final Long id);
+    @Override
+    public User get(Long id) {
+        return USER_DAO_IMPL.get(id);
+    }
 }
-

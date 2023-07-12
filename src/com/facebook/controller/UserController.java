@@ -1,7 +1,7 @@
 package com.facebook.controller;
 
 import com.facebook.model.User;
-import com.facebook.service.Impl.UserServiceImpl;
+import com.facebook.service.Impl2.UserServiceImpl;
 import com.facebook.service.UserService;
 
 /**
@@ -15,7 +15,7 @@ import com.facebook.service.UserService;
 public class UserController {
 
     private static UserController userController;
-    private static final UserService USER_SERVICE = UserServiceImpl.getInstance();
+    private static final UserService USER_SERVICE_IMPL = new UserServiceImpl();
 
     /**
      * <p>
@@ -42,18 +42,6 @@ public class UserController {
 
     /**
      * <p>
-     * Checks the user to be created
-     * </p>
-     *
-     * @param user Refers {@link User} has to created
-     * @return True if the user is created, false otherwise.
-     */
-    public boolean signUp(final User user) {
-        return USER_SERVICE.signUp(user);
-    }
-
-    /**
-     * <p>
      * Updates the user details.
      * </p>
      *
@@ -61,19 +49,7 @@ public class UserController {
      * @return True if the user is updated, false otherwise.
      */
     public boolean update(final User user) {
-        return USER_SERVICE.update(user);
-    }
-
-    /**
-     * <p>
-     * Checks the user sign in
-     * </p>
-     *
-     * @param user Refers {@link User} has to sign in
-     * @return True if the user is sign in, false otherwise.
-     */
-    public boolean signIn(final User user) {
-        return USER_SERVICE.signIn(user);
+        return USER_SERVICE_IMPL.update(user);
     }
 
     /**
@@ -85,7 +61,7 @@ public class UserController {
      * @return True if the user is deleted, false otherwise.
      */
     public boolean delete(final Long id) {
-        return USER_SERVICE.delete(id);
+        return USER_SERVICE_IMPL.delete(id);
     }
 
     /**
@@ -97,19 +73,8 @@ public class UserController {
      * @return Returns {@link User} details
      */
     public User get(final Long id) {
-        return USER_SERVICE.get(id);
+        return USER_SERVICE_IMPL.get(id);
     }
 
-    /**
-     * <p>
-     * Retrieves the id of the user
-     * </p>
-     *
-     * @param user Refers {@link User} to get id
-     * @return The id of the user
-     */
-    public Long getUserId(final User user) {
-        return USER_SERVICE.getUserId(user);
-    }
 }
 

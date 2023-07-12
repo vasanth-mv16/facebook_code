@@ -1,8 +1,8 @@
-package com.facebook.service.impl2;
+package com.facebook.DAO.Impl;
 
+import com.facebook.DAO.CommentDAO;
 import com.facebook.DAOConnection.JDBCConnection;
 import com.facebook.model.Comment;
-import com.facebook.service.CommentService;
 
 import java.sql.PreparedStatement;
 
@@ -14,9 +14,9 @@ import java.sql.PreparedStatement;
  * @author vasanth
  * @version 1.1
  */
-public class CommentDAOImpl implements CommentService {
+public class CommentDAOImpl implements CommentDAO {
 
-    private static CommentService commentDAOImpl;
+    private static CommentDAO commentDAOImpl;
 
     /**
      * <p>
@@ -33,7 +33,7 @@ public class CommentDAOImpl implements CommentService {
      *
      * @return Returns the singleton instance of the comment service implementation class.
      */
-    public static CommentService getInstance() {
+    public static CommentDAO getInstance() {
         if (null == commentDAOImpl) {
             commentDAOImpl = new CommentDAOImpl();
         }
@@ -63,7 +63,7 @@ public class CommentDAOImpl implements CommentService {
 
             return true;
         } catch (final Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
 
         return false;
@@ -88,7 +88,7 @@ public class CommentDAOImpl implements CommentService {
 
             return true;
         } catch (final Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
 
         return false;

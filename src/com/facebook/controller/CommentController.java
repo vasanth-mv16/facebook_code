@@ -2,7 +2,7 @@ package com.facebook.controller;
 
 import com.facebook.model.Comment;
 import com.facebook.service.CommentService;
-import com.facebook.service.impl2.CommentDAOImpl;
+import com.facebook.service.Impl2.CommentServiceImpl;
 
 /**
  * <p>
@@ -15,7 +15,7 @@ import com.facebook.service.impl2.CommentDAOImpl;
 public class CommentController {
 
     private static CommentController commentController;
-    private static final CommentService COMMENT_DAO = CommentDAOImpl.getInstance();
+    private static final CommentService COMMENT_DAO = new CommentServiceImpl();
 
     /**
      * <p>

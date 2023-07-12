@@ -1,8 +1,8 @@
-package com.facebook.service.impl2;
+package com.facebook.DAO.Impl;
 
+import com.facebook.DAO.LikeDAO;
 import com.facebook.DAOConnection.JDBCConnection;
 import com.facebook.model.Like;
-import com.facebook.service.LikeService;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,9 +17,9 @@ import java.util.Collection;
  * @author vasanth
  * @version 1.1
  */
-public class LikeDAOImpl implements LikeService {
+public class LikeDAOImpl implements LikeDAO {
 
-    private static LikeService likeDAOImpl;
+    private static LikeDAO likeDAOImpl;
 
     /**
      * <p>
@@ -36,7 +36,7 @@ public class LikeDAOImpl implements LikeService {
      *
      * @return Returns the singleton instance of the like service implementation class.
      */
-    public static LikeService getInstance() {
+    public static LikeDAO getInstance() {
         if (null == likeDAOImpl) {
             likeDAOImpl = new LikeDAOImpl();
         }
@@ -64,7 +64,7 @@ public class LikeDAOImpl implements LikeService {
 
             return true;
         } catch (final Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
 
         return false;
@@ -97,7 +97,7 @@ public class LikeDAOImpl implements LikeService {
                 likes.add(like);
             }
         } catch (final Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
 
         return likes;
@@ -126,7 +126,7 @@ public class LikeDAOImpl implements LikeService {
                 like.setPostId(resultSet.getLong("post_id"));
             }
         } catch (final Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
 
         return postId;
@@ -151,7 +151,7 @@ public class LikeDAOImpl implements LikeService {
 
             return true;
         } catch (final Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
 
         return false;
