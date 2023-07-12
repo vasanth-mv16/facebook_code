@@ -1,4 +1,4 @@
-package com.facebook.service;
+package com.facebook.DAO;
 
 import com.facebook.model.User;
 
@@ -8,9 +8,9 @@ import com.facebook.model.User;
  * </p>
  *
  * @author vasanth
- * @version 1.0
+ * @version 1.1
  */
-public interface UserService {
+public interface UserDAO {
 
     /**
      * <p>
@@ -41,5 +41,5 @@ public interface UserService {
      * @return Returns {@link User} details
      */
     User get(final Long id);
-}
 
+}
